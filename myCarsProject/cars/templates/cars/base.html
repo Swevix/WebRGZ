@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>{% block title %}Лучшие машины{% endblock %}</title>
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <header class="py-3">
+      <h1>{% block heading %}Лучшие машины{% endblock %}</h1>
+      <nav>
+        <a href="{% url 'cars:home' %}">Главная</a> |
+        <a href="{% url 'cars:about' %}">О нас</a> |
+        <a href="{% url 'cars:add_car_custom' %}">Добавить (Form)</a> |
+        <a href="{% url 'cars:add_car_model' %}">Добавить (ModelForm)</a> |
+        <a href="{% url 'cars:upload_file' %}">Загрузка файла</a>
+        {% if user.is_authenticated %}
+          | <a href="{% url 'users:profile' %}">Профиль</a>
+          | <a href="{% url 'users:logout' %}">Выход</a>
+        {% else %}
+          | <a href="{% url 'users:login' %}">Вход</a>
+        {% endif %}
+      </nav>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+  </div>
+</body>
+</html>

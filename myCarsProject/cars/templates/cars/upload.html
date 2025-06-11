@@ -1,0 +1,22 @@
+{% extends "cars/base.html" %}
+{% block content %}
+  <h1>Загрузка файла</h1>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <p>
+      {{ form.file.label_tag }}<br>
+      {{ form.file }}<br>
+      <small>{{ form.file.help_text }}</small><br>
+      {{ form.file.errors }}
+    </p>
+
+    <button type="submit">Загрузить</button>
+  </form>
+
+  {% if link %}
+    <p>Файл успешно загружен: <a href="{{ link }}" target="_blank">{{ link }}</a></p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{# Path: MyCarsProject/cars/templates/cars/tags_list.html #}
+{% extends 'cars/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <h2>Список тегов</h2>
+  <ul>
+    {% for tag in tags %}
+      <li>{{ tag.name }}</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'cars/base.html' %}
+{% block content %}
+  <h1>Добавить автомобиль (ModelForm)</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <p>
+      {{ form.title.label_tag }}<br>
+      {{ form.title }}<br>
+      <small>{{ form.title.help_text }}</small><br>
+      {{ form.title.errors }}
+    </p>
+
+    <p>
+      {{ form.slug.label_tag }}<br>
+      {{ form.slug }}<br>
+      {{ form.slug.errors }}
+    </p>
+
+    <p>
+      {{ form.description.label_tag }}<br>
+      {{ form.description }}<br>
+      {{ form.description.errors }}
+    </p>
+
+    <p>
+      {{ form.price.label_tag }}<br>
+      {{ form.price }}<br>
+      {{ form.price.errors }}
+    </p>
+
+    <p>
+      {{ form.manufacturer.label_tag }}<br>
+      {{ form.manufacturer }}<br>
+      {{ form.manufacturer.errors }}
+    </p>
+
+    <p>
+      {{ form.tags.label_tag }}<br>
+      {{ form.tags }}<br>
+      {{ form.tags.errors }}
+    </p>
+
+    <p>
+      {{ form.image.label_tag }}<br>
+      {{ form.image }}<br>
+      {{ form.image.help_text }}<br>
+      {{ form.image.errors }}
+    </p>
+
+    <button type="submit">Сохранить</button>
+  </form>
+{% endblock %}

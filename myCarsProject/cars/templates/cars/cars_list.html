@@ -1,0 +1,20 @@
+{% extends 'cars/base.html' %}
+
+{% block title %}Машины - Лучшие машины{% endblock %}
+{% block heading %}Список машин{% endblock %}
+
+{% block content %}
+  <p>Ниже представлен список лучших автомобилей.</p>
+  {% if cars %}
+    <ul>
+      {% for car in cars %}
+        <li>
+          <strong>{{ car.name }}</strong> – {{ car.description|truncatewords:20 }}
+          <a href="{% url 'car_detail' car.id %}">Подробнее</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Машины не найдены.</p>
+  {% endif %}
+{% endblock %}
